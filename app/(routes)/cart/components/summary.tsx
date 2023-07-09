@@ -3,12 +3,12 @@
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 import { Currency } from "@/components/ui/currency";
 import { Button } from "@/components/ui/button";
 
 import { useCart } from "@/hooks/use-cart";
-import toast from "react-hot-toast";
 
 export const Summary = () => {
   const searchParams = useSearchParams();
@@ -49,7 +49,7 @@ export const Summary = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button className="w-full mt-6" onClick={onCheckout}>Checkout</Button>
+      <Button disabled={items.length === 0} className="w-full mt-6" onClick={onCheckout}>Checkout</Button>
     </div>
   )
 }
